@@ -5,7 +5,11 @@ import { AuthGuard } from './services/user/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { 
+    path: 'home', 
+    loadChildren: './home/home.module#HomePageModule',
+    canActivate: [AuthGuard] 
+  },
   {
     path: 'event-create',
     loadChildren: './pages/event-create/event-create.module#EventCreatePageModule',
